@@ -1,5 +1,4 @@
 
-from operator import le
 
 
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
