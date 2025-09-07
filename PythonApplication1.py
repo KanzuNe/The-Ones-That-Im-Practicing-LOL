@@ -1,3 +1,4 @@
 
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
-print(f"Welcome to the party, {guest_list[0]}!")
+guest_list.sort(reverse=True)
+print(guest_list)
