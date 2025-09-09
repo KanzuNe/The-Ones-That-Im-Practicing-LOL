@@ -44,18 +44,12 @@ valorant_agents.sort()
 for agent in valorant_agents:
     print(f"{agent.upper()}, you are suck!")
 
-squares=[]
-for value in range(1, 21):
-    square = value ** 2
-    
-    squares.append(square)
-print(squares)
+my_favoite_agents= valorant_agents[:]
+my_bf_favourite_agents = valorant_agents[:]
 
-million =[value for value in range(1, 1_000_001)]
-print(sum(million))
+my_favoite_agents=my_bf_favourite_agents
 
-x3 =[value*3 for value in range(1, 31)]
-print(x3)
+my_favoite_agents.append("Waylay")
 
-cubes= [value**3 for value in range(1, 11)]
-print(cubes) 
+print("This is your favourite agents list:", my_favoite_agents)
+print("\nThis is your boyfriend favourite agents list:", my_bf_favourite_agents)
