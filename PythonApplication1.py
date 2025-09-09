@@ -1,6 +1,10 @@
 
 
 
+import pprint
+from xml.etree.ElementInclude import LimitedRecursiveIncludeError
+
+
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
@@ -47,3 +51,11 @@ for value in range(1, 21):
     squares.append(square)
 print(squares)
 
+million =[value for value in range(1, 1_000_001)]
+print(sum(million))
+
+x3 =[value*3 for value in range(1, 31)]
+print(x3)
+
+cubes= [value**3 for value in range(1, 11)]
+print(cubes) 
