@@ -36,4 +36,9 @@ valorant_agents = [
     "Clove"
 ]
 
-len(valorant_agents)
+valorant_agents.sort()
+for agent in valorant_agents:
+    print(f"{agent.upper()}, you are suck!")
+
+
+
