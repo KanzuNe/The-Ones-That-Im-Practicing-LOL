@@ -40,5 +40,10 @@ valorant_agents.sort()
 for agent in valorant_agents:
     print(f"{agent.upper()}, you are suck!")
 
-
+squares=[]
+for value in range(1, 21):
+    square = value ** 2
+    
+    squares.append(square)
+print(squares)
 
