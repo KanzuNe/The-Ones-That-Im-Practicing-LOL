@@ -1,6 +1,7 @@
 
 
 
+from encodings.punycode import T
 import pprint
 from xml.etree.ElementInclude import LimitedRecursiveIncludeError
 
@@ -58,4 +59,13 @@ alien_colors = ['green', 'yellow', 'red']
 if 'green' in alien_colors:
         print("You just earned 5 points")
 else :
-        print()
+        print("\n")
+
+user_names=['admin', 'user1', 'user2', 'user3', 'user4']
+for user_name in user_names:
+    if user_name == 'admin':
+            print("Hello admin, would you like to see a status report?")
+    else:
+            print(f"Hello {user_name}, thank you for loggin again!")
+
+print("\nThat's it!")
