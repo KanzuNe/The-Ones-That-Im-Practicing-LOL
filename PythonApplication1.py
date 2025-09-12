@@ -95,7 +95,10 @@ myhomie= {'FirstName':'Pham Phu', 'LastName' :'Thai', 'Address': 'Ha Noi', 'Age'
 mybrother ={'FirstName': 'Nguyen Trung', 'LastName': 'Kien', 'Address':'Ha Noi', 'Age':'14'}
 Allfamiliars= [myhomie, mybrother]
 for person in Allfamiliars:
-    print(f"Welcome {person['FirstName']} {person['LastName']}, You are now {person['Age']} and live in {person['Address']})
-#Pets
+    print(f"Welcome {person['FirstName']} {person['LastName']}, You are now {person['Age']} and live in {person['Address']}")
+#FavouritePlaces
+favourite_places = {'Long': ['Japan', 'VietNam', 'Korea'], 'Thai': ['VietNam', 'USA', 'Peru']}
+for name, places in favourite_places.items():
+        print(f"{name}'s favourite places is {places}")
 
 
