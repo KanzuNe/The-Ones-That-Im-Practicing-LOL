@@ -2,9 +2,6 @@
 
 
 #Oh yes, the guest list
-from tkinter import Place
-
-
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
