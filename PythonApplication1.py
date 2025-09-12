@@ -2,6 +2,9 @@
 
 
 #Oh yes, the guest list
+from tkinter import Place
+
+
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
@@ -99,6 +102,10 @@ for person in Allfamiliars:
 #FavouritePlaces
 favourite_places = {'Long': ['Japan', 'VietNam', 'Korea'], 'Thai': ['VietNam', 'USA', 'Peru']}
 for name, places in favourite_places.items():
-        print(f"{name}'s favourite places is {places}")
+        print(f"{name}'s favourite places is:")
+        for countries in places:
+            print("\t", countries)
+
+
 
 
