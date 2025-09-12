@@ -61,12 +61,20 @@ if 'green' in alien_colors:
 else :
         print("\n")
 
-user_names=['admin', 'user1', 'user2', 'user3', 'user4']
+user_names=[]
 for user_name in user_names:
     if user_name == 'admin':
             print("Hello admin, would you like to see a status report?")
-    elif user_name != 'admin':
-            print(f"Hello {user_name}, thank you for log in again!")
     else:
             print("We need to find some users!")
 print("\nThat's it!")
+
+current_users = [' Alice', 'David', 'Homie','Belle']
+new_users=['Admin', 'Miyabi', 'Belle']
+#For casesensitive
+current_lower_users = [user.lower() for user in current_users]
+for new_user in new_users:
+    if new_user.lower() in current_lower_users:
+        print(f"Sorry, {new_user} have already been taken")
+    else:
+        print(f"Good, the name {new_user} is available")
