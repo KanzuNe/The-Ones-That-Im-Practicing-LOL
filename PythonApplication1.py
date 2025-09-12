@@ -84,8 +84,18 @@ for ordinal_number in ordinal_numbers:
     elif ordinal_number == 3:
                 print("3rd")
     else: 
-        print(f"{ordinal_number}th")
+        print(f"{ordinal_number}th\n")
 #Person
 person = {'first_name': 'Vu Minh', 'last_name':'Long','age': '18','city': 'Ha Noi'}
-print(person['first_name'],person['last_name'],person['age'],person['city'])
+for k,v in person.items():
+        print(f"Key:{k}")
+        print(f"Value: {v}\n")
+#People
+myhomie= {'FirstName':'Pham Phu', 'LastName' :'Thai', 'Address': 'Ha Noi', 'Age':'18'}
+mybrother ={'FirstName': 'Nguyen Trung', 'LastName': 'Kien', 'Address':'Ha Noi', 'Age':'14'}
+Allfamiliars= [myhomie, mybrother]
+for person in Allfamiliars:
+    print(f"Welcome {person['FirstName']} {person['LastName']}, You are now {person['Age']} and live in {person['Address']})
+#Pets
+
 
