@@ -105,7 +105,23 @@ for name, places in favourite_places.items():
         print(f"{name}'s favourite places is:")
         for countries in places:
             print("\t", countries)
-
+"""
+#RentalCars
+v=input("Tell me what kind of car you like: ")
+print(f"Oh, so you like", v.title(), "huh?")
+#RestaurantSeating
+people= input("How many people are there in your group? ")
+if int(people)>8:
+            print("Sorry, you have to wait for a table")
+else:
+    print("You are welcome")
+#multiples of Ten
+number= int(input("Tell me a number: "))
+if number%10 ==0:
+        print("This number is a multiple of 10")
+else:
+        print("This number is not a multiple of 10")
+"""
 
 
 
