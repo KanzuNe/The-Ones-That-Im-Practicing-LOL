@@ -1,19 +1,15 @@
 
 
 
-from encodings.punycode import T
-import pprint
-from xml.etree.ElementInclude import LimitedRecursiveIncludeError
-
-
+#Oh yes, the guest list
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
-
+#Uh, dont bother ask me
 gpu = ["4080 super", "5090", "1660 super", "5080"]
 gpu.reverse()
 print(gpu)
-
+#Somedumb project about agents
 valorant_agents = [
     "Brimstone",
     "Viper",
@@ -54,13 +50,13 @@ my_favoite_agents.append("Waylay")
 
 print("This is your favourite agents list:", my_favoite_agents)
 print("\nThis is your boyfriend favourite agents list:", my_bf_favourite_agents)
-
+#And the simple, yet elegant alien colors
 alien_colors = ['green', 'yellow', 'red']
 if 'green' in alien_colors:
         print("You just earned 5 points")
 else :
         print("\n")
-
+#Still username
 user_names=[]
 for user_name in user_names:
     if user_name == 'admin':
@@ -68,7 +64,7 @@ for user_name in user_names:
     else:
             print("We need to find some users!")
 print("\nThat's it!")
-
+#For usersname
 current_users = [' Alice', 'David', 'Homie','Belle']
 new_users=['Admin', 'Miyabi', 'Belle']
 #For casesensitive
@@ -78,8 +74,8 @@ for new_user in new_users:
         print(f"Sorry, {new_user} have already been taken")
     else:
         print(f"Good, the name {new_user} is available")
-
-ordinal_numbers= [range(1,10)]
+#For number from ordinal
+ordinal_numbers= list(range(1,10))
 for ordinal_number in ordinal_numbers:
     if ordinal_numbers == 1:
                 print("1st")
@@ -89,3 +85,7 @@ for ordinal_number in ordinal_numbers:
                 print("3rd")
     else: 
         print(f"{ordinal_number}th")
+#Person
+person = {'first_name': 'Vu Minh', 'last_name':'Long','age': '18','city': 'Ha Noi'}
+print(person['first_name'],person['last_name'],person['age'],person['city'])
+
