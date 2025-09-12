@@ -78,3 +78,14 @@ for new_user in new_users:
         print(f"Sorry, {new_user} have already been taken")
     else:
         print(f"Good, the name {new_user} is available")
+
+ordinal_numbers= [range(1,10)]
+for ordinal_number in ordinal_numbers:
+    if ordinal_numbers == 1:
+                print("1st")
+    elif ordinal_number == 2:
+                print("2nd")
+    elif ordinal_number == 3:
+                print("3rd")
+    else: 
+        print(f"{ordinal_number}th")
