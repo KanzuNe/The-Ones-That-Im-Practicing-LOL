@@ -118,7 +118,7 @@ if number%10 ==0:
         print("This number is a multiple of 10")
 else:
         print("This number is not a multiple of 10")
-"""
+
 #Pizza Toppings
 prompt = "\nWhat toppings do you want on your pizza? "
 prompt +="\nEnter 'quit' to quit "
@@ -129,3 +129,21 @@ while True:
         break
     else:
         print(f"Kay, i will add {mess.title()} to your pizza!")
+
+#Movie Ticket
+prompt= ("\nTell me your age and I will tell you the price! ")
+prompt +=("Type 'quit' to exit! ")
+
+while True:
+    mess= input(prompt)
+    if mess == 'quit':
+        break
+    age = int(mess)
+    if age <=3:
+        print(f"\nFor this {mess}, your price is free!")
+    elif age<=12:
+        print(f"Oh, your age is {mess} so your price is 10$")
+    else:
+        print(f"The price is 15 lol")
+"""
+
