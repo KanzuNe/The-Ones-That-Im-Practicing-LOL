@@ -120,8 +120,12 @@ else:
         print("This number is not a multiple of 10")
 """
 #Pizza Toppings
-prompt = "\nat toppings do you want on your pizza? "
-prompt ="\nEnter 'quit' to quit "
+prompt = "\nWhat toppings do you want on your pizza? "
+prompt +="\nEnter 'quit' to quit "
 
-
-
+while True:
+    mess=input(prompt)
+    if mess == 'quit':
+        break
+    else:
+        print(f"Kay, i will add {mess.title()} to your pizza!")
