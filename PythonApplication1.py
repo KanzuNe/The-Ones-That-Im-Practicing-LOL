@@ -147,9 +147,12 @@ while True:
     else:
         print(f"The price is 15 lol")
 """
-sandwich_orders= ['cheese', 'tomato', 'bacon','chicken']
+#Deli
+sandwich_orders= ['cheese','pastrami','tomato','pastrami','pastrami', 'bacon','chicken']
 finish_orders=[]
-
+print("We are out of pastrami!")
+while 'pastrami' in sandwich_orders:
+    sandwich_orders.remove('pastrami')
 
 while sandwich_orders:
     current_orders = sandwich_orders.pop()
