@@ -1,10 +1,11 @@
 
 
-
+"""
 #Oh yes, the guest list
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
+"""
 #Uh, dont bother ask me
 gpu = ["4080 super", "5090", "1660 super", "5080"]
 gpu.reverse()
@@ -146,4 +147,17 @@ while True:
     else:
         print(f"The price is 15 lol")
 """
+sandwich_orders= ['cheese', 'tomato', 'bacon','chicken']
+finish_orders=[]
+
+
+while sandwich_orders:
+    current_orders = sandwich_orders.pop()
+    print(f"We are now making: {current_orders.title()}")
+    finish_orders.append(current_orders)
+
+print("\nThe following orders have been made:")
+for order in finish_orders:
+    print(order.title(), "Sandwich")
+  
 
