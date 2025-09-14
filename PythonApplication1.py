@@ -7,6 +7,9 @@ guest_list.sort(reverse=True)
 print(guest_list)
 """
 #Uh, dont bother ask me
+from tkinter import ACTIVE, NO
+
+
 gpu = ["4080 super", "5090", "1660 super", "5080"]
 gpu.reverse()
 print(gpu)
@@ -162,5 +165,23 @@ while sandwich_orders:
 print("\nThe following orders have been made:")
 for order in finish_orders:
     print(order.title(), "Sandwich")
-  
+#Dream vâction
+
+#The list
+responses = {}
+active_status = True
+
+prompt = input("Tell me your name ")
+prompt2 = input("What places do you wanna visit? ")
+while active_status:
+    responses[prompt] = prompt2
+
+    prompt3 = input("Do you wanna add another user? yes/no")
+    if prompt3 == "no":
+        active_status=False
+
+print("\nNow the result while be add")
+for k,v in responses.items():
+        print(f"Well, {k.title()} choose {v.title()} for their destination")
+
 
