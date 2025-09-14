@@ -149,7 +149,7 @@ while True:
         print(f"Oh, your age is {mess} so your price is 10$")
     else:
         print(f"The price is 15 lol")
-"""
+
 #Deli
 sandwich_orders= ['cheese','pastrami','tomato','pastrami','pastrami', 'bacon','chicken']
 finish_orders=[]
@@ -182,5 +182,13 @@ while active_status:
 print("\nNow the result will be add:")
 for k,v in responses.items():
         print(f"Well, {k.title()} choose {v.title()} for their destination")
+"""
+
+name=input("Tell me your name")
+def greeting(name):
+    print(name)
+
+greeting(name)
+
 
 
