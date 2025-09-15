@@ -5,7 +5,7 @@
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
 guest_list.sort(reverse=True)
 print(guest_list)
-"""
+
 #Uh, dont bother ask me
 from tkinter import ACTIVE, NO
 
@@ -106,7 +106,8 @@ for name, places in favourite_places.items():
         print(f"{name}'s favourite places is:")
         for countries in places:
             print("\t", countries)
-"""
+            
+
 #RentalCars
 v=input("Tell me what kind of car you like: ")
 print(f"Oh, so you like", v.title(), "huh?")
@@ -165,7 +166,7 @@ while sandwich_orders:
 print("\nThe following orders have been made:")
 for order in finish_orders:
     print(order.title(), "Sandwich")
-#Dream vâction
+#Dream vaction
 
 responses = {}
 active_status = True
@@ -182,13 +183,45 @@ while active_status:
 print("\nNow the result will be add:")
 for k,v in responses.items():
         print(f"Well, {k.title()} choose {v.title()} for their destination")
-"""
 
-name=input("Tell me your name")
+name=input("What is your name? ")
 def greeting(name):
-    print(name)
+    print(f"\nWelcome, {name.title()} for coming here")
 
 greeting(name)
 
+"""
+def make_shirt(size="large", mess="I love python"):
+    print(f"So your size is {size.title()} and the message is {mess}")
 
+make_shirt(size="small")
 
+#City Name
+
+def city_country(City, Country):
+    fullname = f"Welcome to {City}, {Country}"
+    return fullname
+
+print(city_country('Ha Noi', 'Viet Nam'))
+
+#Album
+"""
+def make_album(Name, Title, Number=None):
+    full = {'name': Name, 'title': Title}
+    if Number != None:
+        full['number'] =Number
+    return full
+
+while True:
+    n= input(f"Tell me the name")
+    if n == 'q':
+        break
+    t= input(f"Tell me the title")
+    if t== 'q':
+        break
+
+    the_name = make_album(n,t)
+    print(the_name)
+"""
+
+   
