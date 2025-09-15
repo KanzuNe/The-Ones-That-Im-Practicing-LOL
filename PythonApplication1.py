@@ -225,6 +225,9 @@ while True:
     print(the_name)
 """
 #Message
+from tkinter import FIRST
+
+
 old_mess = ['Hello how are you', 'Fuck You','Bullshit']
 new_ones =[]
 
@@ -241,3 +244,20 @@ def show_messages(new_ones):
    
 pre_show_mess(old_mess,new_ones)
 show_messages(new_ones)
+#Sandwiches
+def items(*sandwich):
+    print("Here are the items in your sandwichs: \n")
+    for k in sandwich:
+        print(f"-{k.title()}")
+
+items('tomamto')
+items('bacon', 'cheese')
+items('garlic')
+#User Profile
+def build_profile(first_name, last_name, **user_profile):
+    user_profile['firstname']=first_name
+    user_profile['lastname']=last_name
+    return user_profile
+
+me=build_profile('Nguyen', 'Hieu', location='HaNoi')
+print(me)
