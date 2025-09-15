@@ -225,7 +225,7 @@ while True:
     print(the_name)
 """
 #Message
-from tkinter import FIRST
+from logging import makeLogRecord
 
 
 old_mess = ['Hello how are you', 'Fuck You','Bullshit']
@@ -261,3 +261,9 @@ def build_profile(first_name, last_name, **user_profile):
 
 me=build_profile('Nguyen', 'Hieu', location='HaNoi')
 print(me)
+#Cars
+def make_cars(manu, model, *more_info):
+    full=manu,model,more_info
+    return full
+
+print(make_cars('subaru', 'outback', 'blue'))
