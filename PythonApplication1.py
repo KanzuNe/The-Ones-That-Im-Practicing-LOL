@@ -191,6 +191,7 @@ def greeting(name):
 greeting(name)
 
 """
+"""
 def make_shirt(size="large", mess="I love python"):
     print(f"So your size is {size.title()} and the message is {mess}")
 
@@ -203,7 +204,7 @@ def city_country(City, Country):
     return fullname
 
 print(city_country('Ha Noi', 'Viet Nam'))
-
+"""
 #Album
 """
 def make_album(Name, Title, Number=None):
@@ -223,5 +224,20 @@ while True:
     the_name = make_album(n,t)
     print(the_name)
 """
+#Message
+old_mess = ['Hello how are you', 'Fuck You','Bullshit']
+new_ones =[]
 
+def  pre_show_mess(old_mess, new_ones):
+    while old_mess:
+        current_ones= old_mess.pop()
+        print(f"\nThe following messages is being processed:{current_ones}")
+        new_ones.append(current_ones)
+
+def show_messages(new_ones):
+    print("\nHere is the one that's done the proccess:")
+    for k in new_ones:
+        print(k)
    
+pre_show_mess(old_mess,new_ones)
+show_messages(new_ones)
