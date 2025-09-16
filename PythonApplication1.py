@@ -224,9 +224,8 @@ while True:
     the_name = make_album(n,t)
     print(the_name)
 """
+"""
 #Message
-from logging import makeLogRecord
-
 
 old_mess = ['Hello how are you', 'Fuck You','Bullshit']
 new_ones =[]
@@ -267,3 +266,4 @@ def make_cars(manu, model, *more_info):
     return full
 
 print(make_cars('subaru', 'outback', 'blue'))
+"""
