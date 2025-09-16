@@ -271,13 +271,13 @@ import random
 random_number = random.randint(1,100)
 while random_number:
     prompt = ("You will have to guess a number! ")
-    prompt += ("Type 'q' to quit")
     user_input = int(input(prompt))
+    
     if user_input < random_number:
         print("Oh, the number is higher than that!")
     elif user_input > random_number:
         print("Oh my, try lower I guess!")
-    elif user_input == 'q'
+    elif user_input == 'q':
         break
     else:
         print(f"Bing Bong, the number is {random_number}")
