@@ -267,6 +267,7 @@ def make_cars(manu, model, *more_info):
 
 print(make_cars('subaru', 'outback', 'blue'))
 """
+"""
 import random
 random_number = random.randint(1,100)
 while random_number:
@@ -279,4 +280,9 @@ while random_number:
     else:
         print(f"Bing Bong, the number is {random_number}")
         break
-    
+"""
+x=12
+y=1
+print(x,y)
+x,y=y,x
+print(x,y)
