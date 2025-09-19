@@ -289,20 +289,28 @@ print(x,y)
 
 #Restaurant
 class Restaurant:
-    def __init__(self, restaurant_name, cuisine_type, number_served=0):
+    def __init__(self, restaurant_name, cuisine_type):
         self.name=restaurant_name
         self.type=cuisine_type
+        self.number_type=0
     def describe_restaurant(self):
         print(f"Our restaurant's name is {self.name.title()}, and we serve {self.type.title()}")
     def open_restaurant(self):
         print("Our store is now opened!")
-my_restaurant = Restaurant('New Eridu', 'Japanese')
-my_restaurant.describe_restaurant()
-my_restaurant.open_restaurant()
+    def number_type(self):
+        print(f"You have served {self.number_type} people!")
+    def set_number_served(self, new_number):
+        self.number_type=new_number
+    def increse_number(self, increse):
+        self.number_type += increse
+        
 
-ur_restaurant = Restaurant("Majestic", "Western")
-ur_restaurant.describe_restaurant()
-ur_restaurant.open_restaurant()
+restaurant = Restaurant('New Eridu', 'Japanese')
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+restaurant.set_number_served(5)
+restaurant.increse_number(10000)
+print(restaurant.number_type)
 
 
 
