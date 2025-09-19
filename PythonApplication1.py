@@ -286,3 +286,15 @@ y=1
 print(x,y)
 x,y=y,x
 print(x,y)
+
+#Restaurant
+class Restaurant:
+    def _init_(self, restaurant_name, cuisine_type):
+        self.name=restaurant_name
+        self.type=cuisine_type
+    def describe_restaurant(self):
+        print(f"Our restaurant's name is {self.name}, and we serve {self.type}")
+    def open_restaurant(self):
+        print("Our store is now opened!")
+
+
