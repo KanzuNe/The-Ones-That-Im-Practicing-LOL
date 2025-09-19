@@ -289,12 +289,21 @@ print(x,y)
 
 #Restaurant
 class Restaurant:
-    def _init_(self, restaurant_name, cuisine_type):
+    def __init__(self, restaurant_name, cuisine_type, number_served=0):
         self.name=restaurant_name
         self.type=cuisine_type
     def describe_restaurant(self):
-        print(f"Our restaurant's name is {self.name}, and we serve {self.type}")
+        print(f"Our restaurant's name is {self.name.title()}, and we serve {self.type.title()}")
     def open_restaurant(self):
         print("Our store is now opened!")
+my_restaurant = Restaurant('New Eridu', 'Japanese')
+my_restaurant.describe_restaurant()
+my_restaurant.open_restaurant()
+
+ur_restaurant = Restaurant("Majestic", "Western")
+ur_restaurant.describe_restaurant()
+ur_restaurant.open_restaurant()
+
+
 
 
