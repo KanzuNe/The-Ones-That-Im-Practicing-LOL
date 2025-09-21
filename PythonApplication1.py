@@ -312,6 +312,20 @@ restaurant.set_number_served(5)
 restaurant.increse_number(10000)
 print(restaurant.number_type)
 
+#Ice Cream Stand
+
+class IceCreamStand(Restaurant):
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavours = ['Vanilla', 'Chocolate', 'Strawberry']
+    def display_flavours(self):
+        print("Here are all the available flavors:")
+        for flavour in self.flavours:
+            print("-", flavour)
+
+# Example usage for 9-6:
+ice_cream_stand = IceCreamStand("Trang Tien", "Ice Cream")
+ice_cream_stand.display_flavours()
 
 
 
