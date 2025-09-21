@@ -317,15 +317,24 @@ print(restaurant.number_type)
 class IceCreamStand(Restaurant):
     def __init__(self, restaurant_name, cuisine_type):
         super().__init__(restaurant_name, cuisine_type)
-        self.flavours = ['Vanilla', 'Chocolate', 'Strawberry']
-    def display_flavours(self):
-        print("Here are all the available flavors:")
-        for flavour in self.flavours:
-            print("-", flavour)
+        self.flavours = ['Vanila', 'Chocolate']
+    def flavour(self):
+        for f in self.flavours:
+            print(f)
 
-# Example usage for 9-6:
-ice_cream_stand = IceCreamStand("Trang Tien", "Ice Cream")
-ice_cream_stand.display_flavours()
+Ic=IceCreamStand("Trang Tien", "IceCream")
+Ic.flavour()
 
+#Dice
+from random import randint
+    
+class Dice:
+    def __init__(self, sides=6):
+        self.sides=sides
+    def roll_dice(self):
+        print(randint(1, self.sides))
+
+new_dices= Dice(10)
+new_dices.roll_dice()
 
 
