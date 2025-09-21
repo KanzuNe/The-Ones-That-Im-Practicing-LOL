@@ -357,3 +357,15 @@ class Users:
 User1= Users("Hius", "Nguyen Trung", "04092007", "5")
 User1.describe_user()
 User1.greet_user()
+
+class Admin(Users):
+    def __init__(self, first_name, last_name, password, app_number):
+        super().__init__(first_name, last_name, password, app_number)
+        self.privileges = ['can add post', 'can delete post', 'can ban user']
+    def privilage(self):
+        print(f"Here are all of {self.first} {self.last} privilages: ")
+        for p in self.privileges:
+            print("-", p)
+
+Admin1=Admin("Vu", "Minh Long", "281182", "10")
+Admin1.privilage()
