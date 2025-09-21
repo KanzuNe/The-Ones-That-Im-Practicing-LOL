@@ -1,5 +1,3 @@
-
-
 """
 #Oh yes, the guest list
 guest_list = ['Alice', 'Bob', 'Charlie', 'David']
@@ -336,7 +334,6 @@ class Dice:
 
 new_dices= Dice(10)
 new_dices.roll_dice()
-
 #Users
 class Users:
     def __init__(self, first_name, last_name, password, app_number):
@@ -354,18 +351,25 @@ class Users:
         self.fullname = self.first + " " + self.last
         print(f"Hello, welcome onboard, captain {self.fullname}")
 
-User1= Users("Hius", "Nguyen Trung", "04092007", "5")
-User1.describe_user()
-User1.greet_user()
+
+# 9-8. Privileges
+class Privileges:
+    def __init__(self, privileges):
+        self.privileges = privileges
+    def show_privileges(self):
+        print("Privileges:")
+        for p in self.privileges:
+            print("-", p)
+
 
 class Admin(Users):
     def __init__(self, first_name, last_name, password, app_number):
         super().__init__(first_name, last_name, password, app_number)
-        self.privileges = ['can add post', 'can delete post', 'can ban user']
-    def privilage(self):
-        print(f"Here are all of {self.first} {self.last} privilages: ")
-        for p in self.privileges:
-            print("-", p)
+        self.privileges = Privileges(['add a post', 'delete a post', 'ban a user'])
 
-Admin1=Admin("Vu", "Minh Long", "281182", "10")
-Admin1.privilage()
+Admin1 = Admin("Vu", "Minh Long", "281182", "10")
+Admin1.privileges.show_privileges()
+Admin1.greet_user()
+Admin1.describe_user()
+
+
