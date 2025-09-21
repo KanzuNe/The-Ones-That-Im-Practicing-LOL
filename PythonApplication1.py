@@ -337,4 +337,23 @@ class Dice:
 new_dices= Dice(10)
 new_dices.roll_dice()
 
+#Users
+class Users:
+    def __init__(self, first_name, last_name, password, app_number):
+        self.first=first_name
+        self.last=last_name
+        self.passw=password
+        self.num=app_number
+    def describe_user(self):
+        print("Here are the information for the user: \n")
+        print("-", self.first)
+        print("-", self.last)
+        print("-", self.passw)
+        print("-", self.num)
+    def greet_user(self):
+        self.fullname = self.first + " " + self.last
+        print(f"Hello, welcome onboard, captain {self.fullname}")
 
+User1= Users("Hius", "Nguyen Trung", "04092007", "5")
+User1.describe_user()
+User1.greet_user()
