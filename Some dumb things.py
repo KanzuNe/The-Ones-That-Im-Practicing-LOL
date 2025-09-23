@@ -503,13 +503,19 @@ def greet_user():
 import json 
 
 filename = 'user_fav.txt'
-with open(filename, 'w') as f:
-    fav=input('Tell me your favourite number: ')
-    json.dump(int(fav), f)
 
-with open(filename) as e:
-    favs= json.load(e)
-    print(f"Now I know your favourite number! It's {favs}")
+try:
+    with open(filename) as f:
+        favs= json.load(f)
+except (FileNotFoundError, json.decoder.JSONDecodeError):
+    with open(filename, 'w') as f:
+        fav=input('Tell me your favourite number: ')
+        json.dump(int(fav), f)
+        print(f"So your favourite number is {fav}! ")
+else: 
+    with open(filename) as f:
+        favs= json.load(f)
+        print(f"You already have a favourite number! It's {favs}")
     
 
 
