@@ -484,21 +484,33 @@ while True:
         print(addition)
     except ValueError:
         print("Hell nah, try to enter a number lol")
-"""
+
 #Storing and Greeting new users
 import json
+def greet_user():
+    filename= 'username.txt'
+    try:
+        with open(filename) as f:
+            username=json.load(f)
+    except (FileNotFoundError,json.decoder.JSONDecodeError):
+        username=input("What is your name: ")
+        with open(filename, 'w') as f: 
+            json.dump(username, f)
+            print(f"Welcome {username}, we will remember you next time")
+    else:
+        print(f"Welcome back, {username}")
+"""
+import json 
 
-filename= 'username.txt'
-try:
-    with open(filename) as f:
-        username=json.load(f)
-except (FileNotFoundError,json.decoder.JSONDecodeError):
-    username=input("What is your name: ")
-    with open(filename, 'w') as f: 
-        json.dump(username, f)
-        print(f"Welcome {username}, we will remember you next time")
-else:
-    print(f"Welcome back, {username}")
+filename = 'user_fav.txt'
+with open(filename, 'w') as f:
+    fav=input('Tell me your favourite number: ')
+    json.dump(int(fav), f)
+
+with open(filename) as e:
+    favs= json.load(e)
+    print(f"Now I know your favourite number! It's {favs}")
+    
 
 
 
