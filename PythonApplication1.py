@@ -432,23 +432,25 @@ new_tesla =ElectricCar('tesla', 'model x', '2018')
 new_tesla.battery.get_range()
 new_tesla.battery.upgrade_battery()
 new_tesla.battery.get_range()
-
+"""
 with open('pi_million_digits.txt') as file_object:
     contents= file_object.readlines()
 pi_strings= ''
 for line in contents:
     pi_strings += line.strip()
-"""
+
 birthday=input("Enter your birthday: ")
-"""
+
 if birthday in contents:
     print("Congrats, your birthday is in first million of pi digits!")
 else:
-    print("too bad lol")
+    print("too bad lol"
+"""
+
 text_file = 'programming.txt'
-with open(text_file, 'r+') as file_object:
-    text_file.write('I love loli')
-    
+with open(text_file, 'a') as file_object:
+    file_object.write("I love big boobs\n")
+
 
 
 
