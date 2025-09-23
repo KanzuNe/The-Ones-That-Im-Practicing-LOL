@@ -8,5 +8,7 @@ Be sure to contact me cause I really need a mentor and a senior to help me fix a
   Contacts info: 
     +Facebook: https://www.facebook.com/nthieukanzu/
     +Discord: 609299823278948363
+
+Feel free to DM anytime, guys
     
 
