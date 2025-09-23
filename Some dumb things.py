@@ -445,7 +445,7 @@ if birthday in contents:
     print("Congrats, your birthday is in first million of pi digits!")
 else:
     print("too bad lol"
-"""
+
 
 text_file = 'programming.txt'
 with open(text_file, 'a') as file_object:
@@ -463,7 +463,14 @@ with open(filename, 'a') as file_object:
             break
         else:
             file_object.write(f"{users}\n")
- 
+"""
+
+filename= 'alice.txt'
+with open(filename, encoding='utf-8') as file_objects:
+    contents= file_objects.read()
+    line = contents.split()
+    num= len(line)
+    print(f"The file has {num} words")
 
 
 
