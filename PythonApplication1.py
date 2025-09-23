@@ -451,6 +451,12 @@ text_file = 'programming.txt'
 with open(text_file, 'a') as file_object:
     file_object.write("I love big boobs\n")
 
+#Add new users in txt
+filename ='guests.txt'
+with open(filename, 'a') as file_object:
+    users=input("Tell me your name")
+    file_object.write(f"{users}\n")    
 
+ 
 
 
