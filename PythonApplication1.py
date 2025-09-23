@@ -454,8 +454,18 @@ with open(text_file, 'a') as file_object:
 #Add new users in txt
 filename ='guests.txt'
 with open(filename, 'a') as file_object:
-    users=input("Tell me your name")
-    file_object.write(f"{users}\n")    
+    prompt= "Tell me your name: "
+    prompt += "type q to quit:"
+    while True:
+        users = []
+        users=input(prompt)
+        if users == 'q':
+            break
+        else:
+            file_object.write(f"{users}\n")
+ 
+
+
 
  
 
