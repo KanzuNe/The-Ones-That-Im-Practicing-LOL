@@ -463,7 +463,7 @@ with open(filename, 'a') as file_object:
             break
         else:
             file_object.write(f"{users}\n")
-"""
+
 
 filename= 'alice.txt'
 with open(filename, encoding='utf-8') as file_objects:
@@ -471,6 +471,34 @@ with open(filename, encoding='utf-8') as file_objects:
     line = contents.split()
     num= len(line)
     print(f"The file has {num} words")
+#Addition
+while True:
+    First= input("Enter your first numb: ")
+    if First == 'q':
+        break
+    Sec= input("Enter your second num: ")
+    if Sec == 'q':
+        break
+    try: 
+        addition = int(First) + int(Sec)
+        print(addition)
+    except ValueError:
+        print("Hell nah, try to enter a number lol")
+"""
+#Storing and Greeting new users
+import json
+
+filename= 'username.txt'
+try:
+    with open(filename) as f:
+        username=json.load(f)
+except (FileNotFoundError,json.decoder.JSONDecodeError):
+    username=input("What is your name: ")
+    with open(filename, 'w') as f: 
+        json.dump(username, f)
+        print(f"Welcome {username}, we will remember you next time")
+else:
+    print(f"Welcome back, {username}")
 
 
 
