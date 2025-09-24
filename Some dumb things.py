@@ -543,7 +543,8 @@ class Employee():
     def give_raise(self, money=5000):
         self.money += money
     def __str__(self):
-        return (f"{self.firstname} {self.lastname}:{self.money}")
+       print(f"{self.firstname} {self.lastname}:{self.money}")
+        
         
 import unittest
 from random import randint
@@ -552,17 +553,22 @@ class TestEmployee(unittest.TestCase):
     #Define instance
     def setUp(self):
         self.emp = Employee('Nguyen', 'Trung Hieu', '5000')
+    #Define the default value
     def test_default_value(self):
         self.emp.give_raise()
         self.assertEqual(self.emp.money, 10000)
+    #Define random value
     def test_random_value(self):
         self.addnumber =randint(1000, 2000)
         self.emp.give_raise(self.addnumber)
         self.assertEqual(self.emp.money, 5000 + self.addnumber)
-
+#Testing Section
 if __name__ == '__main__':
     unittest.main()
 
+hius= Employee('Nguyen', 'Trung Hieu', 1000)
+hius.give_raise(2000)
+hius.__str__()
 
         
         
