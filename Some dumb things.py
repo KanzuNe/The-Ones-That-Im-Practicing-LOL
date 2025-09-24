@@ -499,7 +499,7 @@ def greet_user():
             print(f"Welcome {username}, we will remember you next time")
     else:
         print(f"Welcome back, {username}")
-"""
+
 import json 
 
 filename = 'user_fav.txt'
@@ -533,8 +533,27 @@ class NameTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+"""
+#Testing Employee
+class Employee():
+    def __init__(self, first, last, annual):
+        self.firstname = first
+        self.lastname = last
+        self.money=int(annual)
+    def give_raise(self, money=5000):
+        self.money += money
+    def __str__(self):
+        return (f"{self.firstname}, {self.lastname}:{self.money}")
+        
+hius= Employee('Nguyen', 'Trung Hieu', '1000')
+hius.give_raise()
+hius.__str__()
 
-#Testing Emplyee
+        
+        
+
+        
+
 
 
 
