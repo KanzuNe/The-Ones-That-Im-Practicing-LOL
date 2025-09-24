@@ -526,8 +526,15 @@ class NameTest(unittest.TestCase):
 
     def test_cityandcountry(self):
         formatted= cityandcountry('hanoi', 'vietnam')
-        self.assertEqual(formatted, 'Hanoi, Vietnam')
+        self.assertEqual(formatted, 'Hanoi, Vietnam - population ')
+    def test_cityandcountrypop(self):
+        formatted=cityandcountry('laocai', 'vietnam', '100000')
+        self.assertEqual(formatted, 'Laocai, Vietnam - population 100000')
 
+if __name__ == '__main__':
+    unittest.main()
+
+#Testing Emplyee
 
 
 
