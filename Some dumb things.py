@@ -550,7 +550,7 @@ from random import randint
 
 class TestEmployee(unittest.TestCase):
     #Define instance
-    def setUP(self):
+    def setUp(self):
         self.emp = Employee('Nguyen', 'Trung Hieu', '5000')
     def test_default_value(self):
         self.emp.give_raise()
@@ -562,6 +562,7 @@ class TestEmployee(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 
         
         
