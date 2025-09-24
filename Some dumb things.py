@@ -550,15 +550,15 @@ from random import randint
 
 class TestEmployee(unittest.TestCase):
     #Define instance
-    def setUP(self, user):
-        self.user = Employee('Nguyen', 'Trung Hieu', '5000')
+    def setUP(self):
+        self.emp = Employee('Nguyen', 'Trung Hieu', '5000')
     def test_default_value(self):
-        self.user.give_raise()
-        self.assertEqual(self.user.money, 10000)
+        self.emp.give_raise()
+        self.assertEqual(self.emp.money, 10000)
     def test_random_value(self):
         self.addnumber =randint(1000, 2000)
-        self.user.give_raise(self.addnumber)
-        self.assertEqual(self.user.money, 5000 + self.addnumber)
+        self.emp.give_raise(self.addnumber)
+        self.assertEqual(self.emp.money, 5000 + self.addnumber)
 
 if __name__ == '__main__':
     unittest.main()
