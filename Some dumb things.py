@@ -517,6 +517,20 @@ else:
         favs= json.load(f)
         print(f"You already have a favourite number! It's {favs}")
     
+#City, country for testing
+def cityandcountry(City, Country, population= ''):
+    fullname=f"{City.title()}, {Country.title()} - population {population}"
+    return fullname
+import unittest
+class NameTest(unittest.TestCase):
+
+    def test_cityandcountry(self):
+        formatted= cityandcountry('hanoi', 'vietnam')
+        self.assertEqual(formatted, 'Hanoi, Vietnam')
+
+
+
+
 
 
 
