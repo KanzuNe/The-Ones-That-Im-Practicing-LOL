@@ -30,11 +30,14 @@ class AlienInvasion():
         while True:
             self._check_event()
             self._update_screen()
-    def _check_event():
+    def _check_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-    def _update_screen():
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.rect.x += 10
+    def _update_screen(self):
         #Add new color everytime refresh the screen
             self.screen.fill(self.bg_color)
         #Add ship
