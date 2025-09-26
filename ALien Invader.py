@@ -3,7 +3,7 @@ import pygame
 class Ship():
     def __init__(self, ai_image):
         #Set starting position
-        self.screen = ai_image
+        self.screen = ai_image.screen
         self.screen_rect= ai_image.screen.get_rect()
         #Set on the screen and get its rectangular
         self.image=pygame.image.load('ship.bmp')
@@ -28,16 +28,19 @@ class AlienInvasion():
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-        #Refresh the screen
-            pygame.display.flip()
+            self._check_event()
+            self._update_screen()
+    def _check_event():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+    def _update_screen():
         #Add new color everytime refresh the screen
             self.screen.fill(self.bg_color)
         #Add ship
             self.ship.blitme()
-
+        #Refresh the screen
+            pygame.display.flip()
 if __name__ == "__main__":
     AI= AlienInvasion()
     AI.run_game()
