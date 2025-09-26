@@ -14,7 +14,7 @@ class Ship():
     def update_position(self):
         #Add flag for moving
         if self.Moving_Right:
-            self.ship.rect.x += 20
+            self.rect.x += 1
          #Show the ship to screen
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -45,7 +45,7 @@ class AlienInvasion():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.ship.Moving_Right=True
-            elif event.type ==if pygame.KEYUP:
+            elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.ship.Moving_Right=False        
                     
