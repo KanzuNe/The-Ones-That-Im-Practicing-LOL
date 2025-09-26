@@ -13,7 +13,7 @@ class Ship():
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
-        
+
 class AlienInvasion():
     #The class for the game
 
@@ -22,6 +22,7 @@ class AlienInvasion():
         pygame.init()
         self.screen = pygame.display.set_mode((1366, 768))
         pygame.display.set_caption("Alien Invasion")
+        self.ship = Ship(self)
         #Change bg color
         self.bg_color= (230,1,210)
     def run_game(self):
@@ -34,6 +35,8 @@ class AlienInvasion():
             pygame.display.flip()
         #Add new color everytime refresh the screen
             self.screen.fill(self.bg_color)
+        #Add ship
+            self.ship.blitme()
 
 if __name__ == "__main__":
     AI= AlienInvasion()
