@@ -1,6 +1,12 @@
 import sys
 import pygame
-class Ship():
+
+class Setting:
+    def __init__(self):
+        self.resolution = (1366, 768)
+        self.backg_color = (250, 250, 250)
+
+class Ship:
     def __init__(self, ai_image):
         #Set starting position
         self.screen = ai_image.screen
@@ -24,17 +30,18 @@ class Ship():
      
    
 
-class AlienInvasion():
+class AlienInvasion:
     #The class for the game
 
     def __init__(self):
         #Make the screen
+        self.settings = Setting()
         pygame.init()
-        self.screen = pygame.display.set_mode((1366, 768))
+        self.screen = pygame.display.set_mode((self.settings.resolution))
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
         #Change bg color
-        self.bg_color= (230,1,210)
+        self.bg_color= (self.settings.backg_color)
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
@@ -65,6 +72,7 @@ class AlienInvasion():
             self.ship.blitme()
         #Refresh the screen
             pygame.display.flip()
+
 if __name__ == "__main__":
     AI= AlienInvasion()
     AI.run_game()
