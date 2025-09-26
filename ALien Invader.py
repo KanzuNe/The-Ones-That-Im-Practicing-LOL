@@ -11,10 +11,13 @@ class Ship():
         #Set the ship at bottom
         self.rect.midbottom = self.screen_rect.midbottom
         self.Moving_Right = False
+        self.Moving_Left = False
     def update_position(self):
         #Add flag for moving
         if self.Moving_Right:
             self.rect.x += 1
+        if self.Moving_Left:
+            self.rect.x -= 1
          #Show the ship to screen
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -36,8 +39,9 @@ class AlienInvasion():
         #Start the mainloop for the game lol
         while True:
             self._check_event()
-            self._update_screen()
             self.ship.update_position()
+            self._update_screen()
+            
     def _check_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -45,9 +49,14 @@ class AlienInvasion():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.ship.Moving_Right=True
+                if event.key == pygame.K_LEFT:
+                    self.ship.Moving_Left=True
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
-                    self.ship.Moving_Right=False        
+                    self.ship.Moving_Right=False
+                if event.key == pygame.K_LEFT:
+                    self.ship.Moving_Left=False   
+                 
                     
     def _update_screen(self):
         #Add new color everytime refresh the screen
