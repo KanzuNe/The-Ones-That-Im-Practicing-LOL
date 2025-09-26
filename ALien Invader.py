@@ -10,9 +10,16 @@ class Ship():
         self.rect =self.image.get_rect()
         #Set the ship at bottom
         self.rect.midbottom = self.screen_rect.midbottom
-
+        self.Moving_Right = False
+    def update_position(self):
+        #Add flag for moving
+        if self.Moving_Right:
+            self.ship.rect.x += 20
+         #Show the ship to screen
     def blitme(self):
         self.screen.blit(self.image, self.rect)
+     
+   
 
 class AlienInvasion():
     #The class for the game
@@ -30,13 +37,18 @@ class AlienInvasion():
         while True:
             self._check_event()
             self._update_screen()
+            self.ship.update_position()
     def _check_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    self.ship.rect.x += 10
+                    self.ship.Moving_Right=True
+            elif event.type ==if pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.Moving_Right=False        
+                    
     def _update_screen(self):
         #Add new color everytime refresh the screen
             self.screen.fill(self.bg_color)
