@@ -5,6 +5,7 @@ class Setting:
     def __init__(self):
         self.resolution = (1366, 768)
         self.backg_color = (250, 250, 250)
+        self.ship_speed = 1.5
 
 class Ship:
     def __init__(self, ai_image):
@@ -18,12 +19,16 @@ class Ship:
         self.rect.midbottom = self.screen_rect.midbottom
         self.Moving_Right = False
         self.Moving_Left = False
+        self.settings= Setting()
     def update_position(self):
+        self.x = float(self.rect.x)
+        self.rect.x = self.x
         #Add flag for moving
         if self.Moving_Right:
-            self.rect.x += 1
+            self.rect.x += self.settings.ship_speed
         if self.Moving_Left:
-            self.rect.x -= 1
+            self.rect.x -= self.settings.ship_speed
+        
          #Show the ship to screen
     def blitme(self):
         self.screen.blit(self.image, self.rect)
