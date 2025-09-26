@@ -3,9 +3,12 @@ import pygame
 
 class Setting:
     def __init__(self):
-        self.resolution = (1366, 768)
+        self.width_res = 1366
+        self.height_res = 768
+        self.resolution = (self.width_res, self.height_res)
+        
         self.backg_color = (250, 250, 250)
-        self.ship_speed = 1.5
+        self.ship_speed = 3
 
 class Ship:
     def __init__(self, ai_image):
@@ -17,6 +20,7 @@ class Ship:
         self.rect =self.image.get_rect()
         #Set the ship at bottom
         self.rect.midbottom = self.screen_rect.midbottom
+        #Moving FLags
         self.Moving_Right = False
         self.Moving_Left = False
         self.settings= Setting()
@@ -24,9 +28,9 @@ class Ship:
         self.x = float(self.rect.x)
         self.rect.x = self.x
         #Add flag for moving
-        if self.Moving_Right:
+        if self.Moving_Right and self.rect.x < self.settings.width_res:
             self.rect.x += self.settings.ship_speed
-        if self.Moving_Left:
+        if self.Moving_Left and self.rect.x > 0:
             self.rect.x -= self.settings.ship_speed
         
          #Show the ship to screen
