@@ -1,20 +1,20 @@
 import sys
 import pygame
 
-class AlienInvasion(self):
+class AlienInvasion():
     #The class for the game
 
     def __init__(self):
         #Make the screen
         pygame.init()
-        self.screen = pygame.display.set.mode((1920, 1080))
+        self.screen = pygame.display.set_mode((1366, 768))
         pygame.display.set_caption("Alien Invasion")
 
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
             for event in pygame.event.get():
-                if event.type == pygame.quit:
+                if event.type == pygame.QUIT:
                     sys.exit()
         #Refresh the screen
             pygame.display.flip()
