@@ -10,7 +10,7 @@ class AlienInvasion():
         self.screen = pygame.display.set_mode((1366, 768))
         pygame.display.set_caption("Alien Invasion")
         #Change bg color
-        self.bg_color= (250,250,250)
+        self.bg_color= (230,1,210)
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
@@ -19,6 +19,8 @@ class AlienInvasion():
                     sys.exit()
         #Refresh the screen
             pygame.display.flip()
+        #Add new color everytime refresh the screen
+            self.screen.fill(self.bg_color)
 
 if __name__ == "__main__":
     AI= AlienInvasion()
