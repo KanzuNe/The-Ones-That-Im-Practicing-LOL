@@ -28,7 +28,7 @@ class Ship:
         self.x = float(self.rect.x)
         self.rect.x = self.x
         #Add flag for moving
-        if self.Moving_Right and self.rect.x < self.settings.width_res:
+        if self.Moving_Right and self.rect.right < self.screen_rect.right:
             self.rect.x += self.settings.ship_speed
         if self.Moving_Left and self.rect.x > 0:
             self.rect.x -= self.settings.ship_speed
