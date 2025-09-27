@@ -15,6 +15,7 @@ class Setting:
         self.bullet_width= 3
         self.bullet_height =15
         self.bullet_color = (50,50,50)
+        self.bullet_allowed = 3
 class Bullet(Sprite):
         def __init__(self, ai_image):
             super().__init__()
@@ -85,6 +86,12 @@ class AlienInvasion:
             self.ship.update_position()
             self.bullet.update()
             self._update_screen()
+        
+            #remove bullet
+            for bullet in self.bullet.copy():
+                if bullet.rect.bottom<=0:
+                    self.bullet.remove(bullet)
+            
             
     def _check_event(self):
         for event in pygame.event.get():
@@ -123,11 +130,12 @@ class AlienInvasion:
             self.screen.fill(self.bg_color)
         #Add ship
             self.ship.blitme()
-        #Refresh the screen
-            pygame.display.flip()
         #Update the decimal number of bullet
             for bullet in self.bullet.sprites():
                  bullet.draw_bullet()
+        #Refresh the screen
+            pygame.display.flip()
+        
         
 
 if __name__ == "__main__":
