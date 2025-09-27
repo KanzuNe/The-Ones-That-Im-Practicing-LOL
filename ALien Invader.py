@@ -104,7 +104,7 @@ class AlienInvasion:
                  self._check_event_keyup(event)
 
     def fire_bullet(self):
-        if len(self.bullet) <= self.settings.bullet_allowed:
+        if len(self.bullet) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullet.add(new_bullet)  
 
