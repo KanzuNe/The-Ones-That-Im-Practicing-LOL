@@ -1,15 +1,40 @@
 import sys
 import pygame
+from pygame.sprite import Sprite
+
 
 class Setting:
     def __init__(self):
         self.width_res = 1366
         self.height_res = 768
         self.resolution = (self.width_res, self.height_res)
-        
         self.backg_color = (250, 250, 250)
         self.ship_speed = 3
+        #Bullet
+        self.bullet_speed = 1
+        self.bullet_width= 3
+        self.bullet_height =15
+        self.bullet_color = (2,5,10)
+class Bullet(Sprite):
+        def __init__(self, ai_game):
+            self.settings = Setting()
+            super().__init__()
+            self.screen = ai_game.screen
+            self.settings= ai_game.settings
+            self.color = self.settings.bullet_color
 
+          #Get a bullet rect at 00
+            self.rect = pygame.Rect(0,0, self.settings.bullet_width, self.settings.bullet_height)
+            self.rect.midtop = ai_game.ship.rect.midtop
+          #Get position as decimal
+            self.y = float(self.rect.y)
+        def update(self):
+            self.y += self.settings.bullet_speed
+            self.rect.y=self.y
+            #draw the bullet
+        def draw_bullet(self):
+          pygame.draw.rect(self.screen, self.color, self.rect)
+        
 class Ship:
     def __init__(self, ai_image):
         #Set starting position
@@ -49,6 +74,7 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.resolution))
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
+        self.bullet = pygame.sprite.Group()
         #Change bg color
         self.bg_color= (self.settings.backg_color)
     def run_game(self):
@@ -56,6 +82,7 @@ class AlienInvasion:
         while True:
             self._check_event()
             self.ship.update_position()
+            self.bullet.update()
             self._update_screen()
             
     def _check_event(self):
@@ -66,7 +93,11 @@ class AlienInvasion:
                  self._check_event_keydown(event)
             elif event.type == pygame.KEYUP:
                  self._check_event_keyup(event)
-            
+                 
+    def fire_bullet(self):
+        new_bullet = Bullet(self)
+        self.bullet.add(new_bullet)  
+
     def _check_event_keydown(self, event):
             
                 if event.key == pygame.K_RIGHT:
@@ -75,6 +106,9 @@ class AlienInvasion:
                     self.ship.Moving_Left=True
                 elif event.key ==pygame.K_q:
                     sys.exit()
+                elif event.key == pygame.K_SPACE:
+                     self.fire_bullet()
+                     
     def _check_event_keyup(self, event):
             
                 if event.key == pygame.K_RIGHT:
@@ -90,6 +124,10 @@ class AlienInvasion:
             self.ship.blitme()
         #Refresh the screen
             pygame.display.flip()
+        #Update the decimal number of bullet
+            for bullet in self.bullet.sprites():
+                 bullet.draw_bullet()
+        
 
 if __name__ == "__main__":
     AI= AlienInvasion()
