@@ -88,6 +88,7 @@ class AlienInvasion:
             self._update_screen()
         
             #remove bullet
+           
             for bullet in self.bullet.copy():
                 if bullet.rect.bottom<=0:
                     self.bullet.remove(bullet)
@@ -103,8 +104,9 @@ class AlienInvasion:
                  self._check_event_keyup(event)
 
     def fire_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullet.add(new_bullet)  
+        if len(self.bullet) <= self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullet.add(new_bullet)  
 
     def _check_event_keydown(self, event):
             
