@@ -14,22 +14,23 @@ class Setting:
         self.bullet_speed = 1
         self.bullet_width= 3
         self.bullet_height =15
-        self.bullet_color = (2,5,10)
+        self.bullet_color = (50,50,50)
 class Bullet(Sprite):
-        def __init__(self, ai_game):
-            self.settings = Setting()
+        def __init__(self, ai_image):
             super().__init__()
-            self.screen = ai_game.screen
-            self.settings= ai_game.settings
+            self.settings = Setting()
+            self.ship = Ship(ai_image)
+            
+            self.screen = ai_image.screen
             self.color = self.settings.bullet_color
 
           #Get a bullet rect at 00
             self.rect = pygame.Rect(0,0, self.settings.bullet_width, self.settings.bullet_height)
-            self.rect.midtop = ai_game.ship.rect.midtop
+            self.rect.midtop = ai_image.ship.rect.midtop
           #Get position as decimal
             self.y = float(self.rect.y)
         def update(self):
-            self.y += self.settings.bullet_speed
+            self.y -= self.settings.bullet_speed
             self.rect.y=self.y
             #draw the bullet
         def draw_bullet(self):
@@ -93,7 +94,7 @@ class AlienInvasion:
                  self._check_event_keydown(event)
             elif event.type == pygame.KEYUP:
                  self._check_event_keyup(event)
-                 
+
     def fire_bullet(self):
         new_bullet = Bullet(self)
         self.bullet.add(new_bullet)  
