@@ -563,16 +563,15 @@ class TestEmployee(unittest.TestCase):
         self.emp.give_raise(self.addnumber)
         self.assertEqual(self.emp.money, 5000 + self.addnumber)
 #Testing Section
-if __name__ == '__main__':
-    unittest.main()
+
 
 hius= Employee('Nguyen', 'Trung Hieu', 1000)
 hius.give_raise(2000)
 hius.__str__()
 
         
-        
-
+set ={'a', 'i,', 'e', 'o', 'u'}
+print(set)
         
 
 

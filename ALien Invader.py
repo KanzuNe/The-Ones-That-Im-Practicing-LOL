@@ -15,7 +15,7 @@ class Setting:
         self.bullet_width= 3
         self.bullet_height =15
         self.bullet_color = (50,50,50)
-        self.bullet_allowed = 3
+        self.bullet_allowed = 5
 class Bullet(Sprite):
         def __init__(self, ai_image):
             super().__init__()
