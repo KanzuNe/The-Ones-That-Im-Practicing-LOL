@@ -37,6 +37,18 @@ class Bullet(Sprite):
         def draw_bullet(self):
           pygame.draw.rect(self.screen, self.color, self.rect)
         
+class Alien(Sprite):
+    def __init__(self, ai_game):
+        super.__init__()
+        self.screen = ai_game.screen
+        #Set the image up
+        self.image = pygame.image.load('alien.bmp')
+        self.rect = self.image.get_rect()
+        #Allign the image
+        self.rect.x = self.screen.width
+        self.rect.y=self.screen.height
+        #Assin the float
+        self.x=float(self.rect.x)
 class Ship:
     def __init__(self, ai_image):
         #Set starting position
