@@ -96,9 +96,28 @@ class AlienInvasion:
         self.aliens= pygame.sprite.Group()
         self.create_fleet()
     def create_fleet(self):
-        alien=Alien(self)
-        self.aliens.add(alien)
-              
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        available_space = self.settings.width_res -(2*alien_width)
+        number_of_aliens = available_space // (2*alien_width)
+        #For the row
+        self.ship_height = self.ship.rect.height
+        available_space_y = self.settings.height_res - (3*alien_width) - self.ship_height
+        number_of_row = available_space_y // (2*alien_height)
+        for num_row in range(number_of_row):
+            for alien_num in range(number_of_aliens):
+                self.create_alien(alien_num, num_row)
+    def create_alien(self, alien_num, num_row):
+            
+            alien = Alien(self)
+            alien_width = alien.rect.width
+            alien_height = alien.rect.height
+            alien_x = alien_width + 2*alien_width*alien_num
+            alien_y= alien_height + 2*alien_height*num_row
+            alien.rect.x = alien_x
+            alien.rect.y = alien_y
+            self.aliens.add(alien)
+
 
     def run_game(self):
         #Start the mainloop for the game lol
