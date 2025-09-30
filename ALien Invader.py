@@ -20,7 +20,6 @@ class Bullet(Sprite):
         def __init__(self, ai_image):
             super().__init__()
             self.settings = Setting()
-            self.ship = Ship(ai_image)
             
             self.screen = ai_image.screen
             self.color = self.settings.bullet_color
@@ -41,14 +40,17 @@ class Alien(Sprite):
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game.screen
+        
         #Set the image up
         self.image = pygame.image.load('alien.bmp')
         self.rect = self.image.get_rect()
         #Allign the image
-        self.rect.x = self.screen.width
-        self.rect.y=self.screen.height
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
         #Assin the float
-        self.x=float(self.rect.x)
+        self.x = float(self.rect.x)
+    
+        
 class Ship:
     def __init__(self, ai_image):
         #Set starting position
@@ -88,16 +90,14 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.resolution))
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
-        self.alien = Alien(self)
         self.bullet = pygame.sprite.Group()
         #Change bg color
         self.bg_color= (self.settings.backg_color)
-        self.alien= pygame.sprite.Group()
+        self.aliens= pygame.sprite.Group()
         self.create_fleet()
     def create_fleet(self):
-         aliens=Alien
-         self.alien.add(aliens)
-
+        alien=Alien(self)
+        self.aliens.add(alien)
               
 
     def run_game(self):
@@ -156,8 +156,8 @@ class AlienInvasion:
         #Update the decimal number of bullet
             for bullet in self.bullet.sprites():
                  bullet.draw_bullet()
-            for ali in self.alien.sprites():
-                 ali.create_fleet()
+        #Update the alien
+            self.aliens.draw(self.screen)
         #Refresh the screen
             pygame.display.flip()
         
