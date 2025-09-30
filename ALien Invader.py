@@ -39,7 +39,7 @@ class Bullet(Sprite):
         
 class Alien(Sprite):
     def __init__(self, ai_game):
-        super.__init__()
+        super().__init__()
         self.screen = ai_game.screen
         #Set the image up
         self.image = pygame.image.load('alien.bmp')
@@ -88,9 +88,18 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.resolution))
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
+        self.alien = Alien(self)
         self.bullet = pygame.sprite.Group()
         #Change bg color
         self.bg_color= (self.settings.backg_color)
+        self.alien= pygame.sprite.Group()
+        self.create_fleet()
+    def create_fleet(self):
+         aliens=Alien
+         self.alien.add(aliens)
+
+              
+
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
@@ -147,6 +156,8 @@ class AlienInvasion:
         #Update the decimal number of bullet
             for bullet in self.bullet.sprites():
                  bullet.draw_bullet()
+            for ali in self.alien.sprites():
+                 ali.create_fleet()
         #Refresh the screen
             pygame.display.flip()
         
