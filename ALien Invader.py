@@ -1,6 +1,17 @@
 import sys
 import pygame
 from pygame.sprite import Sprite
+from time import sleep
+"""
+class GameStats:
+    def __init__(self, ai_game):
+        self.settings = ai_game.settings
+        ai_game.settings = Setting()
+        self.reset_stats()
+    
+    def reset_stats(self):
+        self.ship_left=self.settings.ship_limit
+        """
 
 
 class Setting:
@@ -12,14 +23,14 @@ class Setting:
         self.ship_speed = 0.5
         #Bullet
         self.bullet_speed = 1
-        self.bullet_width= 3
+        self.bullet_width= 300
         self.bullet_height =15
         self.bullet_color = (50,50,50)
         self.bullet_allowed = 5
         self.alien_moving_speed_horri= 0.3
         self.alien_moving_speed_verti = 10
         self.alien_direction = 1.0 #Moving left = -1,. right = 1
-
+        self.ship_limit = 3
 
 class Bullet(Sprite):
         def __init__(self, ai_image):
@@ -49,9 +60,9 @@ class Alien(Sprite):
         #Set the image up
         self.image = pygame.image.load('alien.bmp')
         self.rect = self.image.get_rect()
-        #Allign the image
-        self.rect.x = self.rect.width
-        self.rect.y = self.rect.height
+        #Start at safe position (will be repositioned in create_alien)
+        self.rect.x = 0
+        self.rect.y = 0
         #Assin the float
         self.x = float(self.rect.x)
     def update(self):
@@ -63,7 +74,7 @@ class Alien(Sprite):
         #Check the edge and return true
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
-        return False
+        
     
 
     
@@ -82,14 +93,16 @@ class Ship:
         self.Moving_Right = False
         self.Moving_Left = False
         self.settings= Setting()
-    def update_position(self):
+        # Store position as float for smooth movement
         self.x = float(self.rect.x)
-        self.rect.x = self.x
+    def update_position(self):
         #Add flag for moving
         if self.Moving_Right and self.rect.right < self.screen_rect.right:
-            self.rect.x += self.settings.ship_speed
-        if self.Moving_Left and self.rect.x > 0:
-            self.rect.x -= self.settings.ship_speed
+            self.x += self.settings.ship_speed
+        if self.Moving_Left and self.x > 0:
+            self.x -= self.settings.ship_speed
+        # Update rect position from float
+        self.rect.x = self.x
         
          #Show the ship to screen
     def blitme(self):
@@ -112,7 +125,16 @@ class AlienInvasion:
         self.bg_color= (self.settings.backg_color)
         self.aliens= pygame.sprite.Group()
         self.create_fleet()
-    
+        self.stats=GameStats(self)
+
+    def ship_hit(self):
+        self.stats.ship_left -= 1
+        self.aliens.empty()
+        self.bullet.empty()
+        self.ship.rect.center
+        sleep(0.5)
+        print(self.stats.ship_left)
+
     def create_fleet(self):
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
@@ -129,7 +151,8 @@ class AlienInvasion:
     def _check_alien_edge(self):
         for alien in self.aliens.sprites():
             if alien.check_edge():
-                print(f"Edge detected! Alien at x={alien.rect.x}, changing direction")
+                print(f"Edge detected! Alien at x={alien.rect.x}, y={alien.rect.y}, screen_width={self.screen.get_rect().width}")
+                print(f"Alien rect: left={alien.rect.left}, right={alien.rect.right}")
                 self._change_alien_direction()
                 break
 
@@ -154,6 +177,11 @@ class AlienInvasion:
         self._check_alien_edge()
         self.aliens.update()
 
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            self.ship_hit()
+
+            
+
     def run_game(self):
         #Start the mainloop for the game lol
         while True:
@@ -170,7 +198,9 @@ class AlienInvasion:
                 if bullet.rect.bottom<=0:
                     self.bullet.remove(bullet)
             collisions= pygame.sprite.groupcollide(self.bullet, self.aliens, True, True)
-            
+            if not self.aliens:
+                self.bullet.empty()
+                self.create_fleet()
     def _check_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
