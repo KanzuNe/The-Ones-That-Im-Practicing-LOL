@@ -16,6 +16,11 @@ class Setting:
         self.bullet_height =15
         self.bullet_color = (50,50,50)
         self.bullet_allowed = 5
+        self.alien_moving_speed_horri= 0.3
+        self.alien_moving_speed_verti = 10
+        self.alien_direction = 1.0 #Moving left = -1,. right = 1
+
+
 class Bullet(Sprite):
         def __init__(self, ai_image):
             super().__init__()
@@ -40,7 +45,7 @@ class Alien(Sprite):
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game.screen
-        
+        self.settings = ai_game.settings
         #Set the image up
         self.image = pygame.image.load('alien.bmp')
         self.rect = self.image.get_rect()
@@ -49,6 +54,18 @@ class Alien(Sprite):
         self.rect.y = self.rect.height
         #Assin the float
         self.x = float(self.rect.x)
+    def update(self):
+        self.x += self.settings.alien_moving_speed_horri * self.settings.alien_direction
+        self.rect.x = self.x
+        
+    def check_edge(self):
+        screen_rect= self.screen.get_rect()
+        #Check the edge and return true
+        if self.rect.right >= screen_rect.right or self.rect.left <= 0:
+            return True
+        return False
+    
+
     
         
 class Ship:
@@ -108,7 +125,19 @@ class AlienInvasion:
         for num_row in range(number_of_row):
             for alien_num in range(number_of_aliens):
                 self.create_alien(alien_num, num_row)
-    
+
+    def _check_alien_edge(self):
+        for alien in self.aliens.sprites():
+            if alien.check_edge():
+                print(f"Edge detected! Alien at x={alien.rect.x}, changing direction")
+                self._change_alien_direction()
+                break
+
+    def _change_alien_direction(self):
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.alien_moving_speed_verti
+        self.settings.alien_direction *= -1
+
     def create_alien(self, alien_num, num_row):
             
             alien = Alien(self)
@@ -118,8 +147,12 @@ class AlienInvasion:
             alien_y= alien_height + 2*alien_height*num_row
             alien.rect.x = alien_x
             alien.rect.y = alien_y
+            alien.x = float(alien.rect.x)  # Initialize the float position
             self.aliens.add(alien)
 
+    def update_alien(self):
+        self._check_alien_edge()
+        self.aliens.update()
 
     def run_game(self):
         #Start the mainloop for the game lol
@@ -127,6 +160,7 @@ class AlienInvasion:
             self._check_event()
             self.ship.update_position()
             self.bullet.update()
+            self.update_alien()
             self._update_screen()
         
             #remove bullet
