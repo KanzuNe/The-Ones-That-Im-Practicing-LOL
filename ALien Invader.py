@@ -2,7 +2,7 @@ import sys
 import pygame
 from pygame.sprite import Sprite
 from time import sleep
-"""
+
 class GameStats:
     def __init__(self, ai_game):
         self.settings = ai_game.settings
@@ -11,7 +11,7 @@ class GameStats:
     
     def reset_stats(self):
         self.ship_left=self.settings.ship_limit
-        """
+        
 
 
 class Setting:
@@ -61,8 +61,9 @@ class Alien(Sprite):
         self.image = pygame.image.load('alien.bmp')
         self.rect = self.image.get_rect()
         #Start at safe position (will be repositioned in create_alien)
-        self.rect.x = 0
-        self.rect.y = 0
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+
         #Assin the float
         self.x = float(self.rect.x)
     def update(self):
@@ -74,7 +75,7 @@ class Alien(Sprite):
         #Check the edge and return true
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
-        
+        return False
     
 
     
