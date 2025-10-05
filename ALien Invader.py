@@ -95,6 +95,7 @@ class AlienInvasion:
         self.bg_color= (self.settings.backg_color)
         self.aliens= pygame.sprite.Group()
         self.create_fleet()
+    
     def create_fleet(self):
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
@@ -107,6 +108,7 @@ class AlienInvasion:
         for num_row in range(number_of_row):
             for alien_num in range(number_of_aliens):
                 self.create_alien(alien_num, num_row)
+    
     def create_alien(self, alien_num, num_row):
             
             alien = Alien(self)
