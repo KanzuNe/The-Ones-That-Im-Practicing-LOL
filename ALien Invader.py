@@ -9,7 +9,7 @@ class Setting:
         self.height_res = 768
         self.resolution = (self.width_res, self.height_res)
         self.backg_color = (250, 250, 250)
-        self.ship_speed = 3
+        self.ship_speed = 0.5
         #Bullet
         self.bullet_speed = 1
         self.bullet_width= 3
@@ -160,15 +160,16 @@ class AlienInvasion:
             self._check_event()
             self.ship.update_position()
             self.bullet.update()
+            self.update_bullet()
             self.update_alien()
             self._update_screen()
         
             #remove bullet
-           
+    def update_bullet(self):
             for bullet in self.bullet.copy():
                 if bullet.rect.bottom<=0:
                     self.bullet.remove(bullet)
-            
+            collisions= pygame.sprite.groupcollide(self.bullet, self.aliens, True, True)
             
     def _check_event(self):
         for event in pygame.event.get():
