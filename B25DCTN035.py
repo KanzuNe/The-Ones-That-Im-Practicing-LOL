@@ -1,6 +1,7 @@
 import os 
 import subprocess
-
+#Tại sao em dùng dictionary thì là vì em đã học được câu lệnh đơn giản của dict 
+# và có vẻ dùng dict sẽ dễ thao tác và chỉnh sửa value bên trong hơn
 sv1= dict(name= "", grade = "", gpa = "")
 sv2=dict(name= "", grade = "", gpa = "")
 sv3=dict(name= "", grade = "", gpa = "")
@@ -132,6 +133,7 @@ while choice !="0":
             print("Currently in Tim Kiem Sinh Vien")
             stt = int(input("Nhap lựa chọn, 0 theo tên, 1 theo khoa: "))
             if stt == 0:
+                #Convert toàn bộ string về lower để compare accurate nhất
                 choice1 = input("Nhập tên sinh viên: ")
                 if choice1.lower() == sv1["name".lower()]:
                     print("Đã tìm thấy sinh viên!")
@@ -184,6 +186,7 @@ while choice !="0":
             students = [("sv1", sv1.copy()), ("sv2", sv2.copy()), ("sv3", sv3.copy()), ("sv4", sv4.copy())]
             #Fix logic sắp xếp
             if stt == 0:
+            #Lấy lambda làm None và biến gpa trong dict students về làm float
                 sorted_stu = sorted(students, key=lambda stt_sv: float(stt_sv[1]["gpa"]))
                 print("Đã sắp xếp sinh viên theo GPA tăng dần!")
             
