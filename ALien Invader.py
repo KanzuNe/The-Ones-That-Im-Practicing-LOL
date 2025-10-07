@@ -23,7 +23,7 @@ class Setting:
         self.ship_speed = 0.5
         #Bullet
         self.bullet_speed = 1
-        self.bullet_width= 300
+        self.bullet_width= 3
         self.bullet_height =15
         self.bullet_color = (50,50,50)
         self.bullet_allowed = 5
@@ -61,8 +61,8 @@ class Alien(Sprite):
         self.image = pygame.image.load('alien.bmp')
         self.rect = self.image.get_rect()
         #Start at safe position (will be repositioned in create_alien)
-        self.rect.x = self.rect.width
-        self.rect.y = self.rect.height
+        self.rect.x = 0
+        self.rect.y = 0
 
         #Assin the float
         self.x = float(self.rect.x)
@@ -127,14 +127,26 @@ class AlienInvasion:
         self.aliens= pygame.sprite.Group()
         self.create_fleet()
         self.stats=GameStats(self)
+        self.gama_active=True
+
+    def check_alien_bottom(self):
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self.ship_hit()
+                break
+    
 
     def ship_hit(self):
-        self.stats.ship_left -= 1
-        self.aliens.empty()
-        self.bullet.empty()
-        self.ship.rect.center
-        sleep(0.5)
-        print(self.stats.ship_left)
+        if self.stats.ship_left >=0:
+            self.stats.ship_left -= 1
+            self.aliens.empty()
+            self.bullet.empty()
+            self.ship.rect.center
+            sleep(0.5)
+            print(self.stats.ship_left)
+        else:
+            self.gama_active = False
 
     def create_fleet(self):
         alien = Alien(self)
@@ -180,6 +192,8 @@ class AlienInvasion:
 
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self.ship_hit()
+        self.check_alien_bottom()
+
 
             
 
@@ -187,12 +201,13 @@ class AlienInvasion:
         #Start the mainloop for the game lol
         while True:
             self._check_event()
-            self.ship.update_position()
-            self.bullet.update()
-            self.update_bullet()
-            self.update_alien()
+            if self.gama_active:
+                self.ship.update_position()
+                self.bullet.update()
+                self.update_bullet()
+                self.update_alien()
             self._update_screen()
-        
+            
             #remove bullet
     def update_bullet(self):
             for bullet in self.bullet.copy():
