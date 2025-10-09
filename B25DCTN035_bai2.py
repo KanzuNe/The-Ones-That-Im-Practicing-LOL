@@ -17,6 +17,4 @@ for tong_chu_so in range (1, 100):
 
 print(len(ketqua))
 ketqua.sort()
-for kq in ketqua:
-    print(kq, " ")
-    
+print(*ketqua)
