@@ -180,6 +180,7 @@ while choice !="0":
                         print(f"{k.upper()}: {v}")
             input("Ấn nút bất kỳ để tiếp")
             pass
+        
     elif choice == "6":
             print("Currently in Sap Xep Sinh Vien")
             stt = int(input("Nhập kiểu sắp xếp gpa, 0 for tăng dần, 1 for giảm dần: "))
@@ -208,6 +209,7 @@ while choice !="0":
             sv4.update(sorted_stu[3][1])
             input("Ấn nút bất kỳ để tiếp")
             pass
+        #dunno why but nếu không dùng copy ver thì sẽ bị overwritng org dictionary :v
     
     elif choice == "0":
         break
