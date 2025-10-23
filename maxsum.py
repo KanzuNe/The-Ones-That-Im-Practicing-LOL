@@ -6,27 +6,18 @@ for _ in range(T):
     current_num= ""
     number=[]
     for char in str:
-        if char.isdigit() == True:
-            number += char
-        else:
-            number.append(" ")
-        s= "".join(number)
-        lsr = s.split()
-print(s)
-print(lsr)
-print(max(map(int, lsr)))
-
-"""
-
-    for char in str:
         if char.isdigit():
             current_num += char
+            print(current_num)
         else:
             if current_num:
                 number.append(int(current_num))
+                print(number)
                 current_num=""
     
 
     print(max(number)) 
-"""
+    
 
+
+    
