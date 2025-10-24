@@ -1,14 +1,14 @@
-
-t = int(input())
-for _ in range(t):
-    N,X,M = map(float, input().split())
-    t = 0
-    z = True
-    while z:
-        result = N * (1+X/100)**t
-        if round(result,2) >=M:
-            print(t)
-            z= False
-        else:
-            t +=1
+import math
+T = int(input())
+for _ in range(T):
+    N, X, M = map(float, input().split())
+    if N>=M:
+        print(0)
+    else:
+        so_nam = math.log(M/N,1+X/100)
+        result = so_nam
+        if N * ((1 + X/100) ** result) < M:
+            result += 1
+        
+        print(int(result))
 
