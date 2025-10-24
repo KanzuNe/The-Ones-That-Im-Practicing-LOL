@@ -33,8 +33,8 @@ i = 0
 while i < len(other_lst)-1:
     if (other_lst[i] + other_lst[i+1]) % 2 == 0:
         print(other_lst[i], other_lst[i+1])
-        other_lst.remove(other_lst[i+1])
-        other_lst.remove(other_lst[i])
+        other_lst.pop(i+1)
+        other_lst.pop(i)
         
     else:
         i += 1

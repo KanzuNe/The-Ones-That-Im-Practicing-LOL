@@ -2,7 +2,7 @@ import math
 T=int(input())
 for _ in range(T):
     a= int(input())
-    k= int(math.log2(a-1))
+    k= int(math.log2(a))
     
 
     ssh_csc= a
