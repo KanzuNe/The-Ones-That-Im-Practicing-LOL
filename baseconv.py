@@ -2,7 +2,7 @@ import math
 t = int(input())
 for _ in range(t):
     co_so_dich = int(input())
-    nhiphan = list((input()))
+    nhiphan = list((input()).strip())
     dodai = len(nhiphan)
     k = int(math.log2(co_so_dich))
     so_du = int(dodai % k)
@@ -24,8 +24,12 @@ for _ in range(t):
         for i in range(0,k):
             bit = int(current_list[i])
             res += bit * (2**(k-i-1))
-        list_res.insert(0,res)
-        res= 0
+            if res<10:
+                list_res.insert(0,res)
+                res= 0
+            else:
+                list_res.insert(0, chr(ord('A')+res-10))
+                res=0
     print(*list_res, sep="")
 
 
