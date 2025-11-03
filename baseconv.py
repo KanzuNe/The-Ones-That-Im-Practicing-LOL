@@ -1,3 +1,4 @@
+"""
 import math
 t = int(input())
 for _ in range(t):
@@ -31,7 +32,37 @@ for _ in range(t):
                 list_res.insert(0, chr(ord('A')+res-10))
                 res=0
     print(*list_res, sep="")
+"""
 
+import math
+
+T = int(input())
+for _ in range(T):
+    b = int(input())
+    k = int(math.log2(b))
+    bin_str = input().strip()
+    length = len(bin_str)
+    
+    # Thêm số 0 vào ĐẦU (không cần đảo!)
+    so_du = length % k
+    if so_du != 0:
+        bin_str = '0' * (k - so_du) + bin_str
+    
+    # Cắt thành chunks (từ trái sang phải)
+    chunks = []
+    for i in range(0, len(bin_str), k):
+        chunks.append(bin_str[i:i+k])
+    
+    # Chuyển sang hệ b
+    res = []
+    for chunk in chunks:
+        ints = int(chunk, 2)
+        if ints < 10:
+            res.append(str(ints))
+        else:
+            res.append(chr(ints - 10 + ord('A')))
+    
+    print(''.join(res))
 
 
 
