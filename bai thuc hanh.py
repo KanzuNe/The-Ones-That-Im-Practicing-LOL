@@ -109,4 +109,27 @@ while True:
                 print(sorted_list[-1])
         pass
     if choice == "6":
+        if not Student.final_list:
+            print("Danh sach sinh vien rong!")
+        else:
+            stt = input("Nhap 0 de sort tang dan, nhap 1 de sort giam dan: ")
+            sorted_list = sorted(Student.final_list, key=lambda sv: float(sv.gpa))
+            
+            if stt == "0":
+                print("Danh sach sinh vien sap xep tang dan theo GPA:")
+                for sv in sorted_list:
+                    print(sv)
+                with open("ds_sv.csv", "w") as f:
+                    for sv in sorted_list:
+                        f.write(f"{sv.msv},{sv.hovaten},{sv.gpa}\n")
+            elif stt == "1":
+                sorted_list.reverse()  # Reverse in place
+                print("Danh sach sinh vien sap xep giam dan theo GPA:")
+                for sv in sorted_list:
+                    print(sv)
+                with open("ds_sv.csv", "w") as f:
+                    for sv in sorted_list:
+                        f.write(f"{sv.msv},{sv.hovaten},{sv.gpa}\n")
+                
+            
         pass
