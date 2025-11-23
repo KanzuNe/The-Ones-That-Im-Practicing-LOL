@@ -1,0 +1,136 @@
+class SinhVien:
+    def __init__(self, msv, ho_ten,gpa):
+        self.msv = msv
+        self.ho_ten = ho_ten
+        self.gpa= gpa
+
+    def __str__(self):
+
+        return f'Mã SV: {self.msv}, Họ tên: {self.ho_ten}, GPA: {self.gpa}'
+
+def doc_danh_sach_sv():
+    danh_sach_sv=[]
+    with open("sv.csv","r") as f:
+        for line in f:
+            try:
+                ma_sv,ho_ten,gpa = line.strip().split(',')
+                gpa=float(gpa)
+                sv = SinhVien(ma_sv,ho_ten,gpa)
+                danh_sach_sv.append(sv)
+            except:
+                pass
+
+    return danh_sach_sv
+def ghi_danh_sach_sv(danh_sach_sv):
+    with open("sv.csv","w") as f:
+        for sv in danh_sach_sv:
+            f.write(f"{sv.msv},{sv.ho_ten},{sv.gpa}\n")
+while True:
+    danh_sach_sinh_vien = doc_danh_sach_sv()
+    print("Chào mừng bạn đến với chương trình quản lý sinh viên!")
+    print("-" * 30)
+    print("1. Thêm sinh viên")
+    print("2. Sửa thông tin sinh viên")
+    print("3. Sắp xếp sinh viên")
+    print("4. Hiển thị danh sách sinh viên")
+    print("5. Xóa sinh viên")
+    print("6. Tim kiếm sinh viên")
+    print("7. Sinh viên có gpa cao/thấp nhất")
+    print("8. Tìm sinh viên theo tên/từ khóa")
+    print("0. Thoát chương trình")
+    print("-" * 30)
+
+    choice = input("Nhap lựa chọn của bạn: ")
+    if choice == '1':
+        msv = input("Nhập mã sinh viên: ")
+        ho_ten = input("Nhập họ tên sinh viên: ")
+        gpa = float(input("Nhập GPA sinh viên: "))
+
+        sv = SinhVien(msv, ho_ten, gpa)
+        danh_sach_sinh_vien.append(sv)
+        ghi_danh_sach_sv(danh_sach_sinh_vien)
+        print("Đã thêm sinh viên thành công!")
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '2':
+        msv = input("Nhập mã sinh viên cần sửa: ")
+        found = False
+        for sv in danh_sach_sinh_vien:
+            if sv.msv == msv:
+                found = True
+                ho_ten = input("Nhập họ tên sinh viên mới: ")
+                gpa = float(input("Nhập GPA sinh viên mới: "))
+                sv.ho_ten = ho_ten
+                sv.gpa = gpa
+                print("Đã sửa thông tin sinh viên thành công!")
+                ghi_danh_sach_sv(danh_sach_sinh_vien)
+
+                break
+        if found == False:
+            print("Không tìm thấy sinh viên với mã đã nhập.")
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '3':
+        print("Sắp xếp sinh viên theo GPA")
+        danh_sach_sinh_vien.sort(key = lambda sv: sv.gpa)
+        for sv in danh_sach_sinh_vien:
+            print(sv)
+        ghi_danh_sach_sv(danh_sach_sinh_vien)
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '4':
+        for sv in danh_sach_sinh_vien:
+            print(sv)
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '5':
+        msv = input("Nhập mã sinh viên cần xóa: ")
+        found = False
+        for sv in danh_sach_sinh_vien:
+            if sv.msv == msv:
+                found = True
+                danh_sach_sinh_vien.remove(sv)
+                print("Đã xóa sinh viên thành công!")
+        if found == False:
+            print("Không tìm thấy sinh viên với mã đã nhập.")
+
+        ghi_danh_sach_sv(danh_sach_sinh_vien)
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '6':
+        msv = input("Nhập mã sinh viên cần tìm kiếm: ")
+        found = False
+        for sv in danh_sach_sinh_vien:
+            if sv.msv == msv:
+                found = True
+                print("Thông tin sinh viên tìm được:")
+                print(sv)
+                break
+        if not found:
+            print("Không tìm thấy sinh viên với mã đã nhập.")
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '7':
+        if not danh_sach_sinh_vien:
+            print("Không có sinh viên trong danh sách.")
+        else:
+            sv_max = max(danh_sach_sinh_vien, key=lambda sv: sv.gpa)
+            sv_min = min(danh_sach_sinh_vien, key=lambda sv: sv.gpa)
+            print(f"Sinh viên có GPA cao nhất:{sv_max}")
+            print(f"Sinh viên có GPA thấp nhất:{sv_min}")
+
+        input("Nhấn Enter để tiếp tục")
+    elif choice == '8':
+        tu_khoa= input("Nhập tên hoặc từ khóa cần tìm kiếm: ").lower()
+        found = False
+
+        for sv in danh_sach_sinh_vien:
+            if tu_khoa in sv.ho_ten.lower():
+                found = True
+                print(sv)
+            if found == False:
+                print("Không tìm thấy sinh viên với tên hoặc từ khóa đã nhập.")
+        input("Nhấn Enter để tiếp tục")
+
+
+    elif choice == '0':
+
+        break
+    else:
+        print("Lựa chọn không hợp lệ. Vui lòng thử lại.")
+
+
